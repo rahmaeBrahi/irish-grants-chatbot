@@ -10,16 +10,16 @@ interface Message {
 }
 
 const GRANTS = [
-  { id: 1, name: 'Priming Grant', provider: 'LEO', amount: 'Up to €80,000', target: 'Startups < 18m, < 10 staff' },
-  { id: 2, name: 'Business Expansion', provider: 'LEO', amount: 'Up to €80,000', target: 'Micro-enterprises 18m+ trading' },
-  { id: 3, name: 'Feasibility Study', provider: 'LEO', amount: 'Max €15,000', target: 'Pre-launch concepts & validation' },
-  { id: 4, name: 'Trading Online Voucher (TOV)', provider: 'LEO', amount: 'Max €2,500', target: 'Micro-enterprises going online' },
-  { id: 5, name: 'Grow Digital Voucher', provider: 'LEO', amount: '€500–€5,000', target: 'Businesses 1–50 staff' },
-  { id: 6, name: 'Digital for Business', provider: 'LEO', amount: 'FREE', target: 'Consultancy for 1-50 staff' },
-  { id: 7, name: 'Innovation Voucher', provider: 'EI', amount: '€10,000–€20,000', target: 'CRO-registered ltd SMEs' },
-  { id: 8, name: 'HPSU Equity Matching', provider: 'EI', amount: '€50k–€800k+', target: 'Export tech/life-science startups' },
-  { id: 9, name: 'Energy Efficiency Grant', provider: 'LEO', amount: '€750–€10,000', target: 'Businesses 1–50 staff with green audit' },
-  { id: 10, name: 'Google Ad Grants', provider: 'Google', amount: '$10,000/mo', target: 'Registered charities (CHY)' },
+  { id: 1, name: 'Priming Grant', provider: 'LEO', amount: 'Up to €80k', target: 'Startups < 18m, < 10 staff' },
+  { id: 2, name: 'Business Expansion', provider: 'LEO', amount: 'Up to €80k', target: 'Trading 18m+, < 10 staff' },
+  { id: 3, name: 'Feasibility Study', provider: 'LEO', amount: 'Max €15k', target: 'Pre-launch concept validation' },
+  { id: 4, name: 'Trading Online Voucher', provider: 'LEO', amount: 'Max €2.5k', target: 'Micro-enterprises going online' },
+  { id: 5, name: 'Grow Digital Voucher', provider: 'LEO', amount: '€500–€5,000', target: 'SMEs with 1–50 staff' },
+  { id: 6, name: 'Digital for Business', provider: 'LEO', amount: 'FREE Audit', target: 'SMEs with 1–50 staff' },
+  { id: 7, name: 'Innovation Voucher', provider: 'EI', amount: '€10k–€20k', target: 'Registered ltd company' },
+  { id: 8, name: 'HPSU Equity', provider: 'EI', amount: '€50k–€800k+', target: 'High-potential export startups' },
+  { id: 9, name: 'Energy Efficiency', provider: 'LEO', amount: 'Up to €10k', target: 'Businesses 1–50 staff' },
+  { id: 10, name: 'Google Ad Grants', provider: 'Google', amount: '$10k/mo', target: 'Registered charities (CHY)' },
 ];
 
 export default function Home() {
@@ -60,7 +60,7 @@ export default function Home() {
           ...prev,
           {
             role: 'assistant',
-            content: `⚠️ **خطأ / Error:** ${data.error || 'حدث خطأ غير متوقع أثناء الاتصال بالخادم. / An unexpected error occurred.'}`,
+            content: `⚠️ **Error:** ${data.error || 'Something went wrong on our end. Please try again.'}`,
           },
         ]);
       }
@@ -70,7 +70,7 @@ export default function Home() {
         ...prev,
         {
           role: 'assistant',
-          content: '⚠️ **خطأ اتصال / Connection Error:** تعذر الاتصال بالخادم. يرجى التحقق من اتصالك بالإنترنت والملف المساعد للمشروع. / Failed to connect to server. Please check your connection.',
+          content: '⚠️ **Connection Error:** Failed to connect to server. Please check your internet connection and try again.',
         },
       ]);
     } finally {
@@ -89,7 +89,7 @@ export default function Home() {
   };
 
   const handleGrantClick = (grantName: string) => {
-    handleSendMessage(`أريد معرفة تفاصيل وشروط الأهلية لـ: ${grantName} \n\n (I want to know details and eligibility requirements for: ${grantName})`);
+    handleSendMessage(`Tell me about the ${grantName} details and eligibility criteria, please.`);
   };
 
   return (
@@ -104,7 +104,7 @@ export default function Home() {
           </div>
         </div>
         <div className="grants-list-container">
-          <h2 className="grants-list-title">قائمة المنح / Grants</h2>
+          <h2 className="grants-list-title">Enterprise Supports</h2>
           {GRANTS.map((grant) => (
             <div
               key={grant.id}
@@ -125,12 +125,12 @@ export default function Home() {
       <main className="chat-area">
         <header className="chat-header">
           <div className="chat-header-info">
-            <h2>مستشار أهلية المنح الإيرلندية 🇮🇪</h2>
-            <div className="chat-status">نشط / Online</div>
+            <h2>Irish Grants Eligibility Advisor</h2>
+            <div className="chat-status">Online & Ready</div>
           </div>
           {messages.length > 0 && (
             <button className="reset-btn" onClick={handleReset}>
-              محادثة جديدة / Reset
+              New Chat
             </button>
           )}
         </header>
@@ -139,35 +139,35 @@ export default function Home() {
         <div className="messages-container">
           {messages.length === 0 ? (
             <div className="welcome-screen">
-              <div className="welcome-icon">🎓</div>
-              <h3>مرحباً بك في مستشار المنح!</h3>
+              <div className="welcome-icon">☘️</div>
+              <h3>How's the form? Let's check your grants!</h3>
               <p>
-                أنا هنا لمساعدتك في التحقق من شروط الأهلية للمنح الحكومية والخاصة بالشركات الصغيرة والمتوسطة (SMEs) والشركات الناشئة في إيرلندا.
+                I am here to guide you through grant eligibility criteria for Irish startups, SMEs, and non-profits. Select a grant from the sidebar or click a suggested query below to get started.
               </p>
               <div className="suggested-questions">
                 <button
                   className="suggested-btn"
-                  onClick={() => handleSendMessage('ما هي شروط منحة Priming Grant؟')}
+                  onClick={() => handleSendMessage('Am I eligible for the LEO Priming Grant?')}
                 >
-                  ☘️ ما هي شروط منحة Priming Grant؟
+                  👉 Am I eligible for the LEO Priming Grant?
                 </button>
                 <button
                   className="suggested-btn"
-                  onClick={() => handleSendMessage('كيف يمكنني التقديم على Trading Online Voucher؟')}
+                  onClick={() => handleSendMessage('What is required for a Trading Online Voucher (TOV)?')}
                 >
-                  💻 كيف أقدم على Trading Online Voucher؟
+                  👉 What is required for a Trading Online Voucher?
                 </button>
                 <button
                   className="suggested-btn"
-                  onClick={() => handleSendMessage('أنا شركة ناشئة في أول 6 أشهر، ما هي المنح المناسبة لي؟')}
+                  onClick={() => handleSendMessage("We are trading for 2 years and want to expand. What's available?")}
                 >
-                  🚀 أنا شركة جديدة، ما هي المنح المناسبة لي؟
+                  👉 Trading 2+ years and expanding?
                 </button>
                 <button
                   className="suggested-btn"
-                  onClick={() => handleSendMessage('هل يمكن تغطية التكاليف التي قمت بدفعها بالفعل؟')}
+                  onClick={() => handleSendMessage('Can I get funded retrospectively for costs I already paid?')}
                 >
-                  💸 هل يتم تغطية التكاليف المدفوعة سابقاً؟
+                  👉 Can I get funded retrospectively?
                 </button>
               </div>
             </div>
@@ -204,7 +204,7 @@ export default function Home() {
               type="text"
               value={input}
               onChange={(e) => setInput(e.target.value)}
-              placeholder="اكتب سؤالك هنا... / Type your question here..."
+              placeholder="Ask about your eligibility (e.g., 'Am I eligible for TOV?')..."
               className="input-field"
               disabled={loading}
             />

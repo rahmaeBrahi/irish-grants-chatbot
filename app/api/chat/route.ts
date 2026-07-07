@@ -35,7 +35,7 @@ Here is the official Knowledge Base:
 ${KNOWLEDGE_BASE}
 </KNOWLEDGE_BASE>
 
-Always answer in the language the user is speaking (e.g., if they ask in Arabic, answer in Arabic. If they ask in English, answer in English). Make sure your tone is helpful, encouraging, and highly professional. Use markdown formatting (bolding, lists, tables) to make your answers easy to read.`;
+Always reply in English with a distinct, warm, and professional Irish tone. Feel free to use friendly Irish colloquialisms naturally and professionally where appropriate (e.g., "How's the form?", "Grand", "Cheers", "No worries", "Splendid", "Fair play to you", "That should be grand"). Make sure your tone is helpful, encouraging, and highly professional. Use markdown formatting (bolding, lists, tables) to make your answers clear and readable.`;
 
     const openRouterResponse = await fetch('https://openrouter.ai/api/v1/chat/completions', {
       method: 'POST',
