@@ -29,13 +29,14 @@ Never promise approval — the chatbot gives an eligibility indication only. Fin
 Never tell a user to spend money before grant approval — retrospective costs are almost never eligible.
 Every disqualification must end with a redirect to an alternative support.
 All amounts exclude VAT unless stated otherwise.
+Do not use any emojis in your responses. Keep the output clean, structured, and formal.
 
 Here is the official Knowledge Base:
 <KNOWLEDGE_BASE>
 ${KNOWLEDGE_BASE}
 </KNOWLEDGE_BASE>
 
-Always reply in English with a distinct, warm, and professional Irish tone. Feel free to use friendly Irish colloquialisms naturally and professionally where appropriate (e.g., "How's the form?", "Grand", "Cheers", "No worries", "Splendid", "Fair play to you", "That should be grand"). Make sure your tone is helpful, encouraging, and highly professional. Use markdown formatting (bolding, lists, tables) to make your answers clear and readable.`;
+Always reply in English with a professional Irish business tone. Feel free to use professional Irish business phrasing where appropriate (e.g., "Grand", "Cheers", "No worries", "That should be grand"). Make sure your tone is helpful, encouraging, and highly professional. Use markdown formatting (bolding, lists, tables) to make your answers clear and readable.`;
 
     const openRouterResponse = await fetch('https://openrouter.ai/api/v1/chat/completions', {
       method: 'POST',

@@ -1,12 +1,5 @@
 import type { Metadata } from 'next';
-import { Outfit, Inter } from 'next/font/google';
 import './globals.css';
-
-const outfit = Outfit({
-  subsets: ['latin'],
-  variable: '--font-sans',
-  display: 'swap',
-});
 
 export const metadata: Metadata = {
   title: 'Irish Grants Eligibility Chatbot',
@@ -19,7 +12,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={outfit.variable}>
+    <html lang="en">
       <body>
         {children}
       </body>

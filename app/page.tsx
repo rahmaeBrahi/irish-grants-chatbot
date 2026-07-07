@@ -60,7 +60,7 @@ export default function Home() {
           ...prev,
           {
             role: 'assistant',
-            content: `⚠️ **Error:** ${data.error || 'Something went wrong on our end. Please try again.'}`,
+            content: `Error: ${data.error || 'Something went wrong on our end. Please try again.'}`,
           },
         ]);
       }
@@ -70,7 +70,7 @@ export default function Home() {
         ...prev,
         {
           role: 'assistant',
-          content: '⚠️ **Connection Error:** Failed to connect to server. Please check your internet connection and try again.',
+          content: 'Connection Error: Failed to connect to server. Please check your internet connection and try again.',
         },
       ]);
     } finally {
@@ -97,7 +97,11 @@ export default function Home() {
       {/* Sidebar with Grants List */}
       <aside className="sidebar">
         <div className="sidebar-header">
-          <div className="sidebar-logo">☘️</div>
+          <div className="sidebar-logo">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ color: '#d4af37' }}>
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+            </svg>
+          </div>
           <div className="sidebar-title">
             <h1>Irish Grants Bot</h1>
             <div className="sidebar-subtitle">Eligibility Advisor</div>
@@ -126,7 +130,7 @@ export default function Home() {
         <header className="chat-header">
           <div className="chat-header-info">
             <h2>Irish Grants Eligibility Advisor</h2>
-            <div className="chat-status">Online & Ready</div>
+            <div className="chat-status">Online</div>
           </div>
           {messages.length > 0 && (
             <button className="reset-btn" onClick={handleReset}>
@@ -139,35 +143,40 @@ export default function Home() {
         <div className="messages-container">
           {messages.length === 0 ? (
             <div className="welcome-screen">
-              <div className="welcome-icon">☘️</div>
-              <h3>How's the form? Let's check your grants!</h3>
+              <div className="welcome-icon" style={{ display: 'flex', justifyContent: 'center', marginBottom: '8px' }}>
+                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={{ color: '#0a2540' }}>
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                  <path d="m9 11 2 2 4-4" />
+                </svg>
+              </div>
+              <h3>Irish Grants Eligibility Portal</h3>
               <p>
-                I am here to guide you through grant eligibility criteria for Irish startups, SMEs, and non-profits. Select a grant from the sidebar or click a suggested query below to get started.
+                Verify eligibility criteria for startups, SMEs, and non-profits based on official LEO and Enterprise Ireland rules.
               </p>
               <div className="suggested-questions">
                 <button
                   className="suggested-btn"
                   onClick={() => handleSendMessage('Am I eligible for the LEO Priming Grant?')}
                 >
-                  👉 Am I eligible for the LEO Priming Grant?
+                  Am I eligible for the LEO Priming Grant?
                 </button>
                 <button
                   className="suggested-btn"
                   onClick={() => handleSendMessage('What is required for a Trading Online Voucher (TOV)?')}
                 >
-                  👉 What is required for a Trading Online Voucher?
+                  What is required for a Trading Online Voucher?
                 </button>
                 <button
                   className="suggested-btn"
                   onClick={() => handleSendMessage("We are trading for 2 years and want to expand. What's available?")}
                 >
-                  👉 Trading 2+ years and expanding?
+                  Trading 2+ years and expanding?
                 </button>
                 <button
                   className="suggested-btn"
                   onClick={() => handleSendMessage('Can I get funded retrospectively for costs I already paid?')}
                 >
-                  👉 Can I get funded retrospectively?
+                  Can I get funded retrospectively?
                 </button>
               </div>
             </div>
